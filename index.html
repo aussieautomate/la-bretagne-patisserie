@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Bretagne Patisserie | French Patisserie, Rose Bay</title>
+  <meta name="description" content="Authentic French Patisserie in Rose Bay, Sydney. Over 20 years of artisan pastries, breads, tarts, macarons, celebration cakes and more. Visit us at 15 Plumer Rd." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Variables ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:       #FAF6F0;
+      --warm-white:  #FFFDF9;
+      --blush:       #F2D9C8;
+      --rose:        #C97B5A;
+      --rose-dark:   #9E5A3C;
+      --navy:        #1C2B3A;
+      --charcoal:    #2D2D2D;
+      --mid:         #6B6B6B;
+      --light:       #E8E0D8;
+      --gold:        #B8903A;
+      --gold-light:  #D4AC5A;
+      --white:       #FFFFFF;
+      --transition:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-sm:   0 2px 12px rgba(0,0,0,0.06);
+      --shadow-md:   0 8px 40px rgba(0,0,0,0.10);
+      --shadow-lg:   0 20px 60px rgba(0,0,0,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── Utilities ─────────────────────────────────────────────── */
+    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+    .serif { font-family: 'Playfair Display', serif; }
+
+    .label {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1.5px;
+      background: var(--gold);
+      margin: 20px 0 28px;
+    }
+    .divider.center { margin-left: auto; margin-right: auto; }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 34px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+      border-radius: 2px;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--rose); color: var(--white); }
+    .btn-primary:hover { background: var(--rose-dark); box-shadow: 0 6px 24px rgba(201,123,90,0.35); }
+    .btn-outline { background: transparent; color: var(--rose); border: 1.5px solid var(--rose); }
+    .btn-outline:hover { background: var(--rose); color: var(--white); }
+    .btn-light { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.6); }
+    .btn-light:hover { background: var(--white); color: var(--charcoal); }
+    .btn-dark { background: var(--navy); color: var(--white); }
+    .btn-dark:hover { background: var(--charcoal); }
+
+    /* ─── Placeholders ──────────────────────────────────────────── */
+    .img-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+    .img-placeholder-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      background: var(--blush);
+      color: var(--rose-dark);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+    .img-placeholder-inner svg { width: 32px; opacity: 0.5; }
+
+    /* ─── Navigation ────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(250, 246, 240, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(184, 144, 58, 0.14);
+      transition: box-shadow var(--transition);
+    }
+    .nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--charcoal);
+      letter-spacing: 0.01em;
+    }
+    .nav-logo-sub {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+
+    .nav-cta { margin-left: 8px; }
+
+    /* hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--charcoal);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    /* mobile drawer */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--warm-white);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 400;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+    }
+    .nav-mobile a:hover { color: var(--rose); }
+    .nav-close {
+      position: absolute; top: 26px; right: 28px;
+      background: none; border: none; cursor: pointer;
+      font-size: 26px; color: var(--charcoal); line-height: 1;
+    }
+    .nav-mobile-sub {
+      font-family: 'Jost', sans-serif !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.14em !important;
+      text-transform: uppercase;
+      color: var(--rose) !important;
+      margin-top: 8px;
+    }
+
+    /* ─── Hero ──────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .hero-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+    .hero-bg-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #2C1A0E 0%, #4A2C1A 40%, #1C2B3A 100%);
+    }
+    .hero-bg-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 65% 45%, rgba(184,144,58,0.18) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 80% at 20% 80%, rgba(201,123,90,0.14) 0%, transparent 55%);
+    }
+    /* Subtle texture */
+    .hero-bg-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B8903A' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(28,43,58,0.75) 0%, rgba(28,43,58,0.4) 55%, rgba(28,43,58,0.2) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 160px 28px 120px;
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 22px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 1px;
+      background: var(--gold-light);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(52px, 7.5vw, 100px);
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(17px, 2vw, 22px);
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 40px;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .hero-badge {
+      position: absolute;
+      right: 60px;
+      bottom: 100px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,144,58,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--gold-light);
+      gap: 2px;
+    }
+    .hero-badge-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .hero-badge-text {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      max-width: 64px;
+      line-height: 1.4;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.35);
+      font-size: 9.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .hero-scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.35; transform: scaleY(1); }
+      50% { opacity: 0.7; transform: scaleY(0.6); }
+    }
+
+    /* ─── Feature Strip ─────────────────────────────────────────── */
+    .feature-strip {
+      background: var(--navy);
+      padding: 28px 0;
+    }
+    .feature-strip-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.65);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .feature-item svg { color: var(--gold-light); flex-shrink: 0; }
+    .feature-sep {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* ─── About ─────────────────────────────────────────────────── */
+    .about {
+      padding: 120px 0;
+      background: var(--warm-white);
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-image-accent {
+      position: absolute;
+      bottom: -32px;
+      right: -32px;
+      width: 48%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border: 6px solid var(--warm-white);
+      box-shadow: var(--shadow-md);
+    }
+    .about-years {
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      background: var(--rose);
+      color: var(--white);
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 8px 28px rgba(201,123,90,0.35);
+      z-index: 2;
+    }
+    .about-years strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1;
+    }
+    .about-years span {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      max-width: 56px;
+      line-height: 1.4;
+    }
+
+    .about-text h2 { font-size: clamp(34px, 3.5vw, 48px); color: var(--charcoal); }
+    .about-text p {
+      font-size: 15.5px;
+      line-height: 1.8;
+      color: var(--mid);
+      margin-bottom: 20px;
+    }
+    .about-text p:last-of-type { margin-bottom: 32px; }
+
+    /* ─── Signature Cakes ───────────────────────────────────────── */
+    .signature {
+      padding: 120px 0;
+      background: var(--cream);
+    }
+    .signature-head {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .signature-head h2 { font-size: clamp(34px, 3.5vw, 50px); color: var(--charcoal); }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--light);
+    }
+
+    .sig-card {
+      background: var(--warm-white);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: z-index 0s;
+    }
+    .sig-card:hover { z-index: 2; }
+    .sig-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      position: relative;
+    }
+    .sig-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .sig-card:hover .sig-img img { transform: scale(1.04); }
+    .sig-img > .img-placeholder-inner {
+      height: 100%;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .sig-card:hover .sig-img > .img-placeholder-inner { transform: scale(1.04); }
+    .sig-info {
+      padding: 24px 28px;
+      border-top: 2px solid transparent;
+      transition: border-color var(--transition);
+    }
+    .sig-card:hover .sig-info { border-color: var(--gold); }
+    .sig-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    .sig-desc {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--mid);
+    }
+
+    /* ─── Menu Categories ───────────────────────────────────────── */
+    .menu-cats {
+      padding: 100px 0;
+      background: var(--navy);
+    }
+    .menu-cats-head {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .menu-cats-head h2 { font-size: clamp(34px, 3.5vw, 50px); color: var(--white); }
+    .menu-cats-head .label { color: var(--gold-light); }
+    .menu-cats-head .divider { background: var(--gold-light); }
+
+    .cats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .cat-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 3px;
+      padding: 36px 24px;
+      text-align: center;
+      text-decoration: none;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .cat-card:hover {
+      background: rgba(184,144,58,0.12);
+      border-color: rgba(184,144,58,0.4);
+      transform: translateY(-4px);
+    }
+    .cat-icon {
+      font-size: 30px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .cat-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .cat-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── Gallery / Instagram ───────────────────────────────────── */
+    .gallery {
+      padding: 100px 0;
+      background: var(--warm-white);
+    }
+    .gallery-head {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .gallery-head h2 { font-size: clamp(32px, 3vw, 46px); color: var(--charcoal); }
+
+    .insta-handle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--rose);
+      text-decoration: none;
+      margin-top: 10px;
+      transition: color var(--transition);
+    }
+    .insta-handle:hover { color: var(--rose-dark); }
+
+    /* Instagram embed container */
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 3px;
+    }
+    .insta-cell {
+      aspect-ratio: 1;
+      overflow: hidden;
+      position: relative;
+      background: var(--blush);
+      cursor: pointer;
+    }
+    .insta-cell img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.4s ease;
+    }
+    .insta-cell:hover img { transform: scale(1.07); }
+    .insta-cell > .img-placeholder-inner {
+      height: 100%;
+      font-size: 0;
+      transition: transform 0.4s ease;
+    }
+    .insta-cell:hover > .img-placeholder-inner { transform: scale(1.07); }
+    .insta-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(28,43,58,0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .insta-cell:hover .insta-overlay { opacity: 1; }
+    .insta-overlay svg { color: var(--white); width: 26px; }
+
+    .insta-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 13.5px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+    .insta-note a { color: var(--rose); text-decoration: none; }
+    .insta-note a:hover { text-decoration: underline; }
+
+    /* Instagram Live Feed embed */
+    .insta-embed-wrap {
+      margin-top: 48px;
+      padding: 36px;
+      background: var(--cream);
+      border: 1px dashed var(--light);
+      border-radius: 4px;
+      text-align: center;
+    }
+    .insta-embed-wrap p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto 20px;
+    }
+    .insta-embed-wrap code {
+      display: block;
+      background: var(--navy);
+      color: var(--gold-light);
+      font-size: 12px;
+      padding: 14px 18px;
+      border-radius: 3px;
+      text-align: left;
+      overflow-x: auto;
+      margin: 0 auto;
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    /* ─── Testimonials ──────────────────────────────────────────── */
+    .testimonials {
+      padding: 100px 0;
+      background: var(--cream);
+      overflow: hidden;
+    }
+    .testimonials-head {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .testimonials-head h2 { font-size: clamp(32px, 3vw, 46px); color: var(--charcoal); }
+
+    .reviews-track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--warm-white);
+      border: 1px solid var(--light);
+      border-radius: 3px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .review-stars svg { color: var(--gold); width: 16px; }
+    .review-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+    }
+    .review-author {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    /* ─── Reviews Summary ───────────────────────────────────────── */
+    .reviews-summary {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 52px;
+      padding: 40px 28px;
+      background: var(--warm-white);
+      border: 1px solid var(--light);
+      border-radius: 3px;
+    }
+    .reviews-rating-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--charcoal);
+    }
+    .reviews-stars-lg {
+      display: flex;
+      gap: 5px;
+      margin: 4px 0;
+    }
+    .reviews-stars-lg svg { width: 22px; height: 22px; }
+    .reviews-rating-label {
+      font-size: 13px;
+      color: var(--mid);
+      letter-spacing: 0.05em;
+    }
+    .reviews-google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      margin-top: 6px;
+      padding: 7px 18px;
+      border: 1px solid var(--light);
+      border-radius: 20px;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .reviews-google-badge:hover { border-color: var(--rose); color: var(--rose); }
+
+    /* ─── CTA Banner ────────────────────────────────────────────── */
+    .cta-banner {
+      padding: 100px 0;
+      background: var(--rose);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Ccircle cx='40' cy='40' r='30' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='15' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 80px;
+    }
+    .cta-banner-inner { position: relative; z-index: 1; }
+    .cta-banner .label { color: rgba(255,255,255,0.75); }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .cta-banner h2 em { font-style: italic; }
+    .cta-banner p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── Contact / Find Us ─────────────────────────────────────── */
+    .contact {
+      padding: 100px 0;
+      background: var(--warm-white);
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-info h2 { font-size: clamp(30px, 3vw, 42px); color: var(--charcoal); margin-bottom: 10px; }
+    .contact-info .divider { margin: 20px 0; }
+
+    .contact-detail {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .contact-detail-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--blush);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--rose);
+    }
+    .contact-detail-body dt {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .contact-detail-body dd {
+      font-size: 15px;
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+    .contact-detail-body dd a {
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .contact-detail-body dd a:hover { color: var(--rose); }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .hours-table tr + tr td { border-top: 1px solid var(--light); }
+    .hours-table td {
+      padding: 9px 0;
+      font-size: 14px;
+      color: var(--mid);
+    }
+    .hours-table td:last-child { text-align: right; color: var(--charcoal); font-weight: 500; }
+
+    .contact-map {
+      position: relative;
+    }
+    .map-frame {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border: none;
+      display: block;
+      filter: saturate(0.85) contrast(0.9);
+    }
+    .map-caption {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--mid);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+    .map-caption a { color: var(--rose); text-decoration: none; }
+    .map-caption a:hover { text-decoration: underline; }
+
+    /* ─── Footer ────────────────────────────────────────────────── */
+    .footer {
+      background: var(--navy);
+      padding: 64px 0 36px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
+    }
+
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      margin-bottom: 4px;
+    }
+    .footer-brand-sub {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+    .footer-about-text {
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+      max-width: 280px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .footer-social a {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+    .footer-social a:hover {
+      border-color: var(--rose);
+      color: var(--rose);
+      background: rgba(201,123,90,0.08);
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 18px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li + li { margin-top: 10px; }
+    .footer-links a {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.04em;
+    }
+    .footer-made {
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+    }
+
+    /* ─── Reveal Animations ─────────────────────────────────────── */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    [data-reveal].visible { opacity: 1; transform: none; }
+    [data-reveal-delay="1"] { transition-delay: 0.1s; }
+    [data-reveal-delay="2"] { transition-delay: 0.2s; }
+    [data-reveal-delay="3"] { transition-delay: 0.3s; }
+    [data-reveal-delay="4"] { transition-delay: 0.4s; }
+    [data-reveal-delay="5"] { transition-delay: 0.5s; }
+    [data-reveal-delay="6"] { transition-delay: 0.6s; }
+
+    /* ─── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-image-accent { right: -16px; }
+
+      .signature-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .cats-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .insta-grid { grid-template-columns: repeat(4, 1fr); }
+
+      .reviews-track { grid-template-columns: repeat(2, 1fr); }
+
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-top > :first-child { grid-column: 1 / -1; }
+      .footer-top > :first-child .footer-about-text { max-width: 100%; }
+
+      .hero-badge { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-content { padding-top: 130px; padding-bottom: 100px; }
+      .hero h1 { font-size: clamp(46px, 13vw, 64px); }
+
+      .signature-grid { grid-template-columns: 1fr; }
+
+      .cats-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .reviews-track { grid-template-columns: 1fr; }
+
+      .insta-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .feature-strip-inner { gap: 20px; }
+      .feature-sep { display: none; }
+
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-top > :first-child { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ────────────────────────────────────────── -->
+  <nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#top" class="nav-logo">
+        <span class="nav-logo-name">La Bretagne</span>
+        <span class="nav-logo-sub">Patisserie · Rose Bay</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#signature">Signature Cakes</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Visit Us</a></li>
+      </ul>
+      <a href="tel:0293273646" class="btn btn-primary nav-cta">Call to Order</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+    <button class="nav-close" id="navClose" aria-label="Close menu">&#x2715;</button>
+    <a href="#about" class="mobile-link">Our Story</a>
+    <a href="#signature" class="mobile-link">Signature Cakes</a>
+    <a href="#menu" class="mobile-link">Menu</a>
+    <a href="#gallery" class="mobile-link">Gallery</a>
+    <a href="#contact" class="mobile-link">Visit Us</a>
+    <a href="tel:0293273646" class="mobile-link nav-mobile-sub">Call to Order</a>
+  </div>
+
+  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <section class="hero" id="top" aria-label="Hero">
+    <div class="hero-bg">
+      <img src="img/hero.jpg" alt="" class="hero-bg-img">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Authentic French Patisserie · Rose Bay, Sydney</p>
+      <h1><span style="white-space:nowrap">Crafted with <em>passion,</em></span><br><span style="white-space:nowrap">baked with love.</span></h1>
+      <p class="hero-tagline">Over 20 years of artisan excellence in the heart of Rose Bay.</p>
+      <div class="hero-actions">
+        <a href="#signature" class="btn btn-primary">Our Signature Cakes</a>
+        <a href="#contact" class="btn btn-light">Visit Us</a>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <span class="hero-badge-num">20+</span>
+      <span class="hero-badge-text">Years of Excellence</span>
+    </div>
+  </section>
+
+  <!-- ── Feature Strip ─────────────────────────────────────── -->
+  <div class="feature-strip" aria-hidden="true">
+    <div class="feature-strip-inner">
+      <div class="feature-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        15 Plumer Rd, Rose Bay
+      </div>
+      <div class="feature-sep"></div>
+      <div class="feature-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.09l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        (02) 9327 3646
+      </div>
+      <div class="feature-sep"></div>
+      <div class="feature-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Celebration Cakes to Order
+      </div>
+      <div class="feature-sep"></div>
+      <div class="feature-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Open 7 Days
+      </div>
+    </div>
+  </div>
+
+  <!-- ── About ──────────────────────────────────────────────── -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image-wrap" data-reveal>
+          <div class="about-image-main">
+            <img src="img/2.png" alt="Inside La Bretagne Patisserie" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="about-image-accent">
+            <img src="img/9.png" alt="Fresh pastries from La Bretagne" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="about-years">
+            <strong>20+</strong>
+            <span>Years Est.</span>
+          </div>
+        </div>
+
+        <div class="about-text" data-reveal data-reveal-delay="2">
+          <span class="label">Our Story</span>
+          <h2 class="section-title">A French tradition,<br>crafted in Sydney.</h2>
+          <div class="divider"></div>
+          <p>For over two decades, La Bretagne Patisserie has been bringing the finest traditions of French baking to the beautiful harbourside suburb of Rose Bay. Every morning our pastry chefs begin work before dawn, ensuring that what lands in your hands is as fresh and exquisite as it would be on a Parisian street corner.</p>
+          <p>From flaky croissants and rustic sourdoughs to delicate macarons and show-stopping celebration cakes — everything is made in-house with premium ingredients and genuine French technique.</p>
+          <a href="#contact" class="btn btn-outline">Visit the Patisserie</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Signature Cakes ───────────────────────────────────── -->
+  <section class="signature" id="signature">
+    <div class="container">
+      <div class="signature-head" data-reveal>
+        <span class="label">Our Celebrated Creations</span>
+        <h2 class="section-title">Signature Cakes</h2>
+        <div class="divider center"></div>
+        <p style="font-size:15.5px; color:var(--mid); max-width:520px; margin:0 auto; line-height:1.8;">Each cake is a labour of love — available to order for birthdays, weddings, and every occasion worth celebrating.</p>
+      </div>
+
+      <div class="signature-grid">
+        <!-- Card 1 -->
+        <div class="sig-card" data-reveal data-reveal-delay="1">
+          <div class="sig-img">
+            <img src="img/3.png" alt="La Concorde">
+          </div>
+          <div class="sig-info">
+            <p class="sig-name">La Concorde</p>
+            <p class="sig-desc">A classic French meringue and chocolate mousse masterpiece — airy, indulgent, and utterly elegant.</p>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="sig-card" data-reveal data-reveal-delay="2">
+          <div class="sig-img">
+            <img src="img/4.png" alt="Baked Cheesecake">
+          </div>
+          <div class="sig-info">
+            <p class="sig-name">Baked Cheesecake</p>
+            <p class="sig-desc">Rich, velvety and perfectly golden — our house-baked cheesecake is a perennial favourite.</p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="sig-card" data-reveal data-reveal-delay="3">
+          <div class="sig-img">
+            <img src="img/5.png" alt="Black Forest Gâteau">
+          </div>
+          <div class="sig-info">
+            <p class="sig-name">Black Forest Gâteau</p>
+            <p class="sig-desc">Layers of dark chocolate, kirsch-soaked cherries and fresh cream — a timeless German-French icon.</p>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="sig-card" data-reveal data-reveal-delay="1">
+          <div class="sig-img">
+            <img src="img/6.png" alt="Tiramisù with Candied Almonds">
+          </div>
+          <div class="sig-info">
+            <p class="sig-name">Tiramisù with Candied Almonds</p>
+            <p class="sig-desc">Our signature twist on the Italian classic — espresso-soaked sponge crowned with crunchy candied almonds.</p>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="sig-card" data-reveal data-reveal-delay="2">
+          <div class="sig-img">
+            <img src="img/7.png" alt="Tarte au Citron">
+          </div>
+          <div class="sig-info">
+            <p class="sig-name">Tarte au Citron</p>
+            <p class="sig-desc">Bright, silky lemon curd in a buttery shortcrust shell — a quintessential French patisserie classic.</p>
+          </div>
+        </div>
+        <!-- Card 6 – Order CTA -->
+        <div class="sig-card" data-reveal data-reveal-delay="3" style="background:var(--navy); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:48px 32px; cursor:default;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:18px"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <p class="sig-name" style="color:var(--white); font-style:normal; font-size:22px; margin-bottom:12px;">Custom Celebration Cakes</p>
+          <p style="font-size:14px; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:28px;">Birthdays, weddings, anniversaries — let us create something truly special for your occasion.</p>
+          <a href="tel:0293273646" class="btn btn-light">Call to Order</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Menu Categories ───────────────────────────────────── -->
+  <section class="menu-cats" id="menu">
+    <div class="container">
+      <div class="menu-cats-head" data-reveal>
+        <span class="label">What We Make</span>
+        <h2 class="section-title" style="color:var(--white);">A patisserie full of<br><em style="font-family:'Playfair Display',serif; font-style:italic; color:var(--gold-light);">wonderful things.</em></h2>
+        <div class="divider center" style="background:var(--gold-light);"></div>
+      </div>
+      <div class="cats-grid">
+        <div class="cat-card" data-reveal data-reveal-delay="1">
+          <span class="cat-icon">🥐</span>
+          <p class="cat-name">Pastries</p>
+          <p class="cat-note">Croissants, danishes & more</p>
+        </div>
+        <div class="cat-card" data-reveal data-reveal-delay="2">
+          <span class="cat-icon">🍞</span>
+          <p class="cat-name">Breads</p>
+          <p class="cat-note">Sourdough, baguettes & loaves</p>
+        </div>
+        <div class="cat-card" data-reveal data-reveal-delay="3">
+          <span class="cat-icon">🥧</span>
+          <p class="cat-name">Tarts & Quiches</p>
+          <p class="cat-note">Sweet & savoury creations</p>
+        </div>
+        <div class="cat-card" data-reveal data-reveal-delay="4">
+          <span class="cat-icon">🍰</span>
+          <p class="cat-name">Macarons</p>
+          <p class="cat-note">Classic French confections</p>
+        </div>
+        <div class="cat-card" data-reveal data-reveal-delay="1">
+          <span class="cat-icon">🎂</span>
+          <p class="cat-name">Celebration Cakes</p>
+          <p class="cat-note">Made-to-order masterpieces</p>
+        </div>
+        <div class="cat-card" data-reveal data-reveal-delay="2">
+          <span class="cat-icon">🧁</span>
+          <p class="cat-name">Cupcakes</p>
+          <p class="cat-note">Daily-baked seasonal flavours</p>
+        </div>
+        <div class="cat-card" data-reveal data-reveal-delay="3">
+          <span class="cat-icon">🍫</span>
+          <p class="cat-name">Slices</p>
+          <p class="cat-note">Rich, indulgent baked slices</p>
+        </div>
+        <div class="cat-card" data-reveal data-reveal-delay="4">
+          <span class="cat-icon">🥧</span>
+          <p class="cat-name">Pies</p>
+          <p class="cat-note">Hearty & wholesome bakes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Gallery / Instagram ───────────────────────────────── -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="gallery-head" data-reveal>
+        <span class="label">Follow Our Creations</span>
+        <h2 class="section-title">Fresh from the Patisserie</h2>
+        <div class="divider center"></div>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-handle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @patisserielabretagne
+        </a>
+      </div>
+
+      <div class="insta-grid" data-reveal>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-cell">
+          <img src="img/1.png" alt="La Bretagne Patisserie">
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-cell">
+          <img src="img/2.png" alt="La Bretagne Patisserie">
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-cell">
+          <img src="img/3.png" alt="La Bretagne Patisserie">
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-cell">
+          <img src="img/4.png" alt="La Bretagne Patisserie">
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-cell">
+          <img src="img/5.png" alt="La Bretagne Patisserie">
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-cell">
+          <img src="img/6.png" alt="La Bretagne Patisserie">
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-cell">
+          <img src="img/7.png" alt="La Bretagne Patisserie">
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-cell">
+          <img src="img/8.png" alt="La Bretagne Patisserie">
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-cell">
+          <img src="img/9.png" alt="La Bretagne Patisserie">
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="insta-cell">
+          <img src="img/10.png" alt="La Bretagne Patisserie">
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+      </div>
+
+      <div style="text-align:center; margin-top:28px;" data-reveal>
+        <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" class="btn btn-outline">See More on Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Testimonials ──────────────────────────────────────── -->
+  <section class="testimonials" id="reviews">
+    <div class="container">
+      <div class="testimonials-head" data-reveal>
+        <span class="label">Google Reviews</span>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="divider center"></div>
+      </div>
+
+      <div class="reviews-summary" data-reveal>
+        <div class="reviews-rating-num">4.6</div>
+        <div class="reviews-stars-lg">
+          <svg viewBox="0 0 24 24" fill="#B8903A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#B8903A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#B8903A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#B8903A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <defs><linearGradient id="star46" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="60%" stop-color="#B8903A"/><stop offset="60%" stop-color="#E8E0D8"/></linearGradient></defs>
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="url(#star46)"/>
+          </svg>
+        </div>
+        <p class="reviews-rating-label">4.6 out of 5 &nbsp;·&nbsp; Based on 90 Google Reviews</p>
+        <a href="https://www.google.com/maps/search/La+Bretagne+Patisserie+Rose+Bay" target="_blank" rel="noopener" class="reviews-google-badge">
+          <span style="font-weight:800;color:#4285F4;font-size:14px;">G</span> View on Google Maps
+        </a>
+      </div>
+
+      <div class="reviews-track">
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="review-text">"Takeaway coffee X shot Cappuccinos as per usual! The coffee was very good as was the service — hard to not mention the price was very good but the coffee was even better. Good service from the young lady and good speed making the coffees ready in a short time."</p>
+          <p class="review-author">— Gus Asad</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="review-text">"Excellent selection of cakes and tarts from single serve to larger size. The mocha I had today was so delicious — very creamy and such nice chocolate balanced with good coffee."</p>
+          <p class="review-author">— Mark Butler</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="review-text">"The bread and pastries are always fresh, Ram and Chefs are incredibly friendly and charming. My favorites are the chocolate croissant, strawberry donut, and macarons. This is hands down my favorite bakery in Sydney!"</p>
+          <p class="review-author">— Gladys SL</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="review-text">"Walked by and thought I'd give it a try — and what a try it was! Perfect French baked goods and appropriate prices. The owner was very welcoming, open for a small chat and some explanations and stories. Definitive recommendation!"</p>
+          <p class="review-author">— Andreas Kreuzer</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="review-text">"Beautiful cakes, you are spoilt for choice here. One of my favorites is the petite four, and another similar to an eclair filled with coffee custard and topped with coffee icing and butter cream is to die for! One of the best French bakeries in Sydney."</p>
+          <p class="review-author">— Louise Brawn</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="review-text">"Thank you La Bretagne Patisserie — my son had his 30th Birthday yesterday. Your Vienna Almond Tiramisu is as amazing as it has always been. He commented that it was fantastic and still the same as when he first had it 20 years ago."</p>
+          <p class="review-author">— Elaine Leung</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA Banner ─────────────────────────────────────────── -->
+  <section class="cta-banner" aria-label="Order Call to Action">
+    <div class="container">
+      <div class="cta-banner-inner" data-reveal>
+        <span class="label">Ready to Indulge?</span>
+        <h2>Order your <em>celebration cake</em><br>today.</h2>
+        <p>Call us to discuss your custom creation, or visit the patisserie to discover what's fresh today.</p>
+        <div class="cta-actions">
+          <a href="tel:0293273646" class="btn btn-dark">Call (02) 9327 3646</a>
+          <a href="mailto:info@labretagnepatisserie.com" class="btn btn-light">Email Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact / Visit ───────────────────────────────────── -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div data-reveal>
+          <span class="label">Find Us</span>
+          <h2 class="section-title contact-info">Visit La Bretagne</h2>
+          <div class="divider"></div>
+
+          <dl>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              </div>
+              <div class="contact-detail-body">
+                <dt>Address</dt>
+                <dd><a href="https://maps.google.com/?q=15+Plumer+Rd+Rose+Bay+NSW" target="_blank" rel="noopener">15 Plumer Rd, Rose Bay NSW 2029</a></dd>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17.09l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div class="contact-detail-body">
+                <dt>Phone</dt>
+                <dd><a href="tel:0293273646">(02) 9327 3646</a></dd>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-detail-body">
+                <dt>Email</dt>
+                <dd><a href="mailto:info@labretagnepatisserie.com">info@labretagnepatisserie.com</a></dd>
+              </div>
+            </div>
+          </dl>
+
+          <h3 style="font-family:'Playfair Display',serif; font-size:18px; font-weight:400; margin:32px 0 12px; color:var(--charcoal);">Opening Hours</h3>
+          <table class="hours-table">
+            <tr><td>Monday – Friday</td><td>7:00am – 5:30pm</td></tr>
+            <tr><td>Saturday</td><td>7:00am – 4:30pm</td></tr>
+            <tr><td>Sunday</td><td>7:30am – 2:00pm</td></tr>
+          </table>
+          <p style="font-size:12px; color:var(--mid); margin-top:12px; letter-spacing:0.04em;">Hours may vary on public holidays. Call ahead to confirm.</p>
+        </div>
+
+        <div data-reveal data-reveal-delay="2">
+          <iframe
+            class="map-frame"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.0!2d151.264!3d-33.868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae2e2cba8c41%3A0x1234567890abcdef!2s15%20Plumer%20Rd%2C%20Rose%20Bay%20NSW%202029!5e0!3m2!1sen!2sau!4v1234567890"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="La Bretagne Patisserie map — 15 Plumer Rd, Rose Bay"
+          ></iframe>
+          <p class="map-caption"><a href="https://maps.google.com/?q=15+Plumer+Rd+Rose+Bay+NSW" target="_blank" rel="noopener">Open in Google Maps →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <p class="footer-brand-name">La Bretagne</p>
+          <p class="footer-brand-sub">Patisserie &amp; Boulangerie</p>
+          <p class="footer-about-text">Authentic French patisserie in the heart of Rose Bay since the early 2000s. Crafted with love, tradition, and the finest ingredients.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="mailto:info@labretagnepatisserie.com" aria-label="Email">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Navigate</h4>
+          <ul class="footer-links">
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#signature">Signature Cakes</a></li>
+            <li><a href="#menu">Our Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Visit Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="https://maps.google.com/?q=15+Plumer+Rd+Rose+Bay+NSW" target="_blank" rel="noopener">15 Plumer Rd, Rose Bay</a></li>
+            <li><a href="tel:0293273646">(02) 9327 3646</a></li>
+            <li><a href="mailto:info@labretagnepatisserie.com">info@labretagnepatisserie.com</a></li>
+            <li><a href="https://www.instagram.com/patisserielabretagne/" target="_blank" rel="noopener">@patisserielabretagne</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024 La Bretagne Patisserie. All rights reserved.</p>
+        <p class="footer-made">15 Plumer Rd, Rose Bay NSW 2029</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Mobile menu
+    const toggle  = document.getElementById('navToggle');
+    const closeBtn = document.getElementById('navClose');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    toggle.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMenu() : openMenu());
+    closeBtn.addEventListener('click', closeMenu);
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+    mobileMenu.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+      revealEls.forEach(el => obs.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
