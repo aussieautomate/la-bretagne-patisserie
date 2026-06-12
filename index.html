@@ -328,6 +328,7 @@
       font-style: italic;
       color: var(--gold-light);
     }
+    .h1-line { white-space: nowrap; }
 
     .hero-tagline {
       font-family: 'Playfair Display', serif;
@@ -1070,7 +1071,7 @@
     @media (max-width: 600px) {
       .hero-content { padding-top: 130px; padding-bottom: 100px; }
       .hero h1 { font-size: clamp(36px, 11vw, 52px); }
-      .hero h1 span { white-space: normal; }
+      .h1-line { white-space: normal; }
 
       .signature-grid { grid-template-columns: 1fr; }
 
@@ -1130,7 +1131,7 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-eyebrow">Authentic French Patisserie · Rose Bay, Sydney</p>
-      <h1><span style="white-space:nowrap">Crafted with <em>passion,</em></span><br><span style="white-space:nowrap">baked with love.</span></h1>
+      <h1><span class="h1-line">Crafted with <em>passion,</em></span><br><span class="h1-line">baked with love.</span></h1>
       <p class="hero-tagline">Over 20 years of artisan excellence in the heart of Rose Bay.</p>
       <div class="hero-actions">
         <a href="#signature" class="btn btn-primary">Our Signature Cakes</a>
