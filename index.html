@@ -992,7 +992,8 @@
       background: rgba(201,123,90,0.08);
     }
 
-    .footer-col h4 {
+    .footer-col h4,
+    .footer-top div h4 {
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.18em;
@@ -1068,7 +1069,8 @@
 
     @media (max-width: 600px) {
       .hero-content { padding-top: 130px; padding-bottom: 100px; }
-      .hero h1 { font-size: clamp(46px, 13vw, 64px); }
+      .hero h1 { font-size: clamp(36px, 11vw, 52px); }
+      .hero h1 span { white-space: normal; }
 
       .signature-grid { grid-template-columns: 1fr; }
 
@@ -1485,7 +1487,7 @@
     <div class="container">
       <div class="cta-banner-inner" data-reveal>
         <span class="label">Ready to Indulge?</span>
-        <h2>Order your <em>celebration cake</em><br>today.</h2>
+        <h2>Order your <span style="white-space:nowrap"><em>celebration cake</em></span><br>today.</h2>
         <p>Call us to discuss your custom creation, or visit the patisserie to discover what's fresh today.</p>
         <div class="cta-actions">
           <a href="tel:0293273646" class="btn btn-dark">Call (02) 9327 3646</a>
